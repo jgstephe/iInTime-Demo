@@ -1,0 +1,24 @@
+<div class="new_user">
+<%= form_for @user do |u| %>
+<table class="register">
+  <th colspan="2">Register for iInTime</th>
+  <% [:name, :email].each do |field| %>
+  <div class="field">
+  <tr>
+    <td><%= u.label field %></td>
+    <td><%= u.text_field field %></td>
+  </tr>
+  </div>
+  <% end %>
+  <% [:password, :password_confirmation].each do |field| %>
+  <div class="field">
+  <tr>
+    <td><%= u.label field %></td>
+    <td><%= u.password_field field %></td>
+  </tr>
+  </div>
+  <% end %>
+  <tr><td colspan="2"><%= u.submit "Register" %></td></tr>
+</table>
+<% end %>
+</div>

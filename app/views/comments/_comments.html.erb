@@ -1,0 +1,13 @@
+<div class="all_comments">
+<% if new_comments %>
+  <%= render 'comments/new_comment', :r => @response %>
+<% end %>
+<%= will_paginate @comments %>
+  <% unless @comments.nil? %>
+  <h3>Comments:</h3>
+  <table class="comments">
+    <%= render @comments %>  
+  </table>
+  <% end %>
+<%= will_paginate @comments %>
+</div>

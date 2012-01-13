@@ -1,0 +1,54 @@
+iInTime Demo
+
+Users can create Questions that other Users can Rate, Comment on, or Respond to.
+
+Locally Hosted: Dropbox/iInTime/example
+GitHub URL: github.com/BoarderDog5/iInTime-Demo
+Heroku: iintime.heroku.com
+
+TO DO:
+  User destroy question
+  User edit
+  Add categories and category sorting to question list
+  fix question navigation wrapping
+  allow up to 10 responses, at least 2 required
+
+Database Schema (using PostgreSQL):
+  in all tables:
+    id:         INT PRIMARY KEY
+    created_at: datetime
+    updated_at: datetime
+
+  Users:
+    name                string
+    email               string
+    encrypted_password  string
+    salt                string
+
+  Questions:
+    content        text
+    correct        string
+    other_a        string
+    other_b        string
+    other_c        string
+    other_d        string
+    title          string
+    category       string
+    expert_answer  text
+    user_id        INT FOREIGN KEY
+  
+  UserQuestionFeedback:
+    user_id      INT FOREIGN KEY
+    question_id  INT FOREIGN KEY
+  
+  Ratings
+    user_question_feedback_id  INT FOREIGN KEY
+    rating                     integer
+  
+  Responses
+    user_question_feedback_id  INT FOREIGN KEY
+    content                    string
+ 
+  Comments
+    user_question_feedback_id  INT FOREIGN KEY
+    comment                    text

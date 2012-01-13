@@ -1,0 +1,34 @@
+<tr>
+  <td><%= q.label "Title of Question:" %></td>
+  <td><%= q.label "Select a Category:" %></td>
+</tr><tr>
+  <td><%= q.text_field :title %></td>
+  <td><%= q.select :category, @categories %></td>
+</tr>
+
+<tr>
+  <td><%= q.label "Question Content:" %></td><td>&nbsp;</td>
+</tr><tr>
+  <td colspan="2"><%= q.text_area :content %></td>
+</tr>  
+
+<tr>
+  <td><%= q.label "Correct Answer:" %></td>
+  <td><%= q.text_field :correct %></td>
+</tr>
+
+<tr>
+  <td>
+    <%= q.label "Wrong Answers:" %><br />
+    <%= form_tag url_for({ :controller => :questions, :action => action }), :remote => true do %>
+    <%= submit_tag "Add New Wrong Answer", :class => "new_wrong" %>
+    <% end %>
+  </td>
+  <td><%= render 'questions/wrong_answers', :wrong => @wrong %></td>
+</tr>
+
+<tr>
+  <td colspan="2"><%= q.label "Expert Answer Explanation:" %></td>
+</tr><tr>
+  <td colspan="2"><%= q.text_area :expert_answer %></td>
+</tr>

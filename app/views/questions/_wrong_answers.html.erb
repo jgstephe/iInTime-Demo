@@ -1,0 +1,8 @@
+<div class="wrong_answers">
+  <%= text_field_tag "wrong_answer[0]" %><br />
+  <% unless wrong.nil? %>
+  <% wrong.split("|").each do |a| %>
+    <%= text_field_tag "wrong_answer[#{wrong.index(a)+1}]", "#{a}", :maxlength => 255 %><br />
+  <% end %>
+  <% end %>
+</div>

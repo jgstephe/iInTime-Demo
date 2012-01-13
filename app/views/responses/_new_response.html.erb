@@ -1,0 +1,14 @@
+<div class="responses_list">
+<%= form_for [@question, @response] do |r| %>
+<!-- %= r.hidden_field :user_id, :value => @user.id % -->
+<ul class="response_list">
+  <% @answers.shuffle.each do |a| %>
+    <li>
+    <%= r.radio_button :content, a.capitalize %>
+    <%= r.label a.capitalize %>
+    </li>
+  <% end %>
+</ul>
+  <%= r.submit "Submit" %>
+<% end %>
+</div>

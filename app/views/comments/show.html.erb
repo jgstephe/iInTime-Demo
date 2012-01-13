@@ -1,0 +1,10 @@
+<div class="comment">
+<%= render 'new_comment' %>
+<%= will_paginate @comments %>>
+  <ul class="comments">
+    <% @comments.each do |c| %>
+    <li><%= c %></li>
+    <% end %>
+  </ul>
+<%= will_paginate @comments %>
+</div>

@@ -1,0 +1,21 @@
+<h1>Edit Question</h1>
+<%= link_to "View Question", @question, :class => "view_question button round" %>
+<table class="edit_question"><tr><td rowspan="2">
+<%= form_for [@user, @question] do |q| %>
+  <table class="edit question_table round">
+    <%= render 'questions/question_form', :q => q, :action => :edit %>
+    <tr>
+      <td colspan="2", class="nq_button">
+        <%= q.submit "Submit Changes" %>
+      </td>
+    </tr>
+  </table>
+<% end %>
+</td><td>
+  <h3 class="rating">
+    This question has an<br />average rating of <%= Rating.average_rating(@question) %>.
+  </h3>
+</td></tr>
+<tr><td>
+<%= render 'comments/comments', :new_comments => false %>
+</td></tr></table>

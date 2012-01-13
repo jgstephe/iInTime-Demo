@@ -1,0 +1,16 @@
+<div class="rating">
+Rate this Question:
+<%= form_for [@question, @rating] do |r| %>
+  <%= hidden_field_tag :response_id, @response.id %>
+  <ul class="rating_list">
+  <% (1..5).each do |n| %>
+    <li>
+      <%= r.label n %><br />
+      <%= r.radio_button :rating, n %>
+    </li>
+  <% end %>
+  </ul>
+  <%= r.submit "Rate It!" %>
+<% end %>
+This question's average<br />rating is <%= @ave_rating %>.
+</div>

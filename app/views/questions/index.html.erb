@@ -1,0 +1,14 @@
+<h1><%= @category %> Questions</h1>
+
+<%= form_tag do %>
+<%= label_tag "View questions in: " %>
+<%= select_tag :category, options_for_select(@categories, :selected => @category) %>
+<%= submit_tag "Go!" %>
+<% end %>  
+
+<% if @questions.empty? %>
+  <h3>No questions have been posted<%= " in #{@category}" unless @category == "All" %>.<br /><br /><%= link_to "Start posting now.", new_question_path %></h3>
+<% else %>
+  <%= link_to "New Question", new_question_path, :class => "new_question button round" %><br />
+  <%= render 'questions/list', :questions => @questions, :editing => false %>
+<% end %>

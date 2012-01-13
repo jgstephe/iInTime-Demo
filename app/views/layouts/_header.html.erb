@@ -1,0 +1,15 @@
+<header>
+  <nav>
+    <ul>
+      <% if Rails.env.development? %>
+        <li><%= link_to "GitHub Repo", 'http://www.github.com/BoarderDog5/iInTime-Demo' %></li>
+      <% end %>
+      <li><%= link_to "Home", root_path %></li>
+      <% if signed_in? %>
+        <li><%= link_to "Sign Out", signout_path %></li>
+      <% else %>
+        <li><%= link_to "Sign In", signin_path %></li>
+      <% end %>
+    </ul>
+  </nav>
+</header>

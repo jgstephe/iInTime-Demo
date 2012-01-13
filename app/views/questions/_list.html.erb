@@ -1,0 +1,13 @@
+<table class="question_list">
+  <tr>
+    <th>Question</th>
+    <th>Average<br />Rating</th>
+    <th># of<br />Comments</th>
+    <th>Last Comment</th>
+    <th>Category</th>
+    <% unless editing %><th>Author</th><% end %>
+  </tr>
+  <% questions.each do |q| %>
+    <%= render 'questions/question_list_entry', :question => q, :editing => editing %>
+  <% end %>
+</table>

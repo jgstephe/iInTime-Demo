@@ -1,0 +1,177 @@
+body {
+  font-family: Verdana, Arial, sans-serif;
+  background: #c0c0c0; 
+  text-align: justify auto; }
+
+#container {
+  width: 850px;
+  margin: auto;
+  background: #fff;
+  padding: 25px 25px 100px 25px;
+  border: 15px solid #505050;
+  display: block; }
+
+ul { list-style-type: none; }
+
+h1 { display: block; margin-left: 50px; }
+td { vertical-align: top; }
+th { padding: 0 10 0 10; }
+
+
+/* table, th, td { border: 1px solid black; } */
+
+a, a:visited { text-decoration: none; color: blue; }
+
+a.button {
+  display: inline-block;
+  padding: 10px;
+  background:268cc4;
+  margin: 20px 50px 20px 50px;
+}
+
+a:hover.button { background: #1e6e9a; }
+
+.round {
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px; }
+
+/* Question Box */
+.question {
+  display: inline-block;
+  background: green;
+  padding: 10px; 
+  text-align: justify; }
+
+.question_table textarea { width: 400px; height: 200px; }
+
+/* Comments */
+.all_comments {
+  display: block;
+  background: #ee9a49;
+  padding: 15px; }
+
+.commenting_user { font-weight: bold; }
+.new_comment { display: block; }
+.comment { text-align: justify; border-top: 1px solid black; padding: 5 5 0 5; }
+.comment .rating { float: right; }
+
+.new_comment textarea {
+  width: 250px;
+  height: 100px;
+  padding: 5px; }
+
+.timestamp {
+  font-size: 80%;
+  font-weight: italic;
+  color: #505050;
+  text-align: right;
+  border-bottom: 1px solid blue; 
+  padding: 0 0 5 0; }
+
+/* Debug Parametor Box */
+.debug_params {
+  display: block;
+  float: right;
+  background: blue;
+  color: white;
+  border: 10px solid red; }
+
+/* Rating Box */
+.rating {
+  display: inline-block;
+  background: yellow;
+  border: 5px solid #c0c0c0;
+  text-align: center;
+  padding: 10px; 
+  margin: 10;}
+
+.rating ul { padding: 0; margin: 5 0 0 0; }
+.rating_list li { display: inline-block; }
+
+/* Registration Table */
+.new_user {
+  display: inline-block;
+  padding: 10px 20px;
+  background: #e0e0e0; }
+
+.register td { text-align: right; }
+
+/* Navigation */
+nav {
+  display: block;
+  float: right;
+  background: #268cc4; }
+
+nav ul li {
+  display: inline-block;
+  background: transparent; 
+  padding: 0; 
+  margin: 0; }
+
+nav a, nav a:visited {
+  font-weight: bold;
+  padding: 12px;
+  color: white; }
+
+nav a:hover { background: #1e6e9a }
+
+/* Question_index */
+.question_list { border-collapse: collapse; }
+tr.correct { background: #c0ffc0; }
+.incorrect { background: #ffc0c0; }
+.question_list td {
+  text-align: right;
+  border: 1px solid grey;
+  padding: 6px; }
+
+.question_list td.title { text-align: left; }
+
+a.new_question_button {
+  display: inline-block;
+  background: #c1c1c1;
+  padding: 10px; }
+
+a:hover.new_question_button{ background: blue; }
+
+.back, .forward { display: block; padding: 0 20 0 20; }
+.back { float: left; }
+.forward { float: right; }
+
+
+/* New Question */
+.question_table {
+  border: 2px solid black;
+  padding: 10px;
+  margin-left: auto;
+  margin-right: auto; }
+
+.new { background: #c0f5ff; }
+.nq_button { text-align: right; }
+.new_wrong { margin: 10px; }
+/* Edit Question */
+.edit_question { width: 100%; vertical-align: top; }
+.edit_question td { width: 50%; }
+.edit { background: #ff00ff; }
+
+.question_feedback {
+  display: block;
+  margin-left: auto;
+  margin-right: auto; }
+
+/* Response Layout */
+.response_display { display: inline-block; width: 100%; padding: 30 0 0 0;}
+.sidebar { width: 45% }
+.main { width: 55% }
+.response { font-weight: bold-italic; font-size: 125%; padding: 0 0 10 10; }
+div.correct { color: green; }
+.wrong { color: red; }
+.show_response { padding: 15 0 0 50; } 
+.expert_answer { 
+  color: #a0a0a0; 
+  font-size: 90%;
+  display: block;
+  margin-left: 100px;
+  margin-right: 100px; 
+  text-align: justify; }
+

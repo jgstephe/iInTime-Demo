@@ -1,0 +1,22 @@
+<%= link_to "<-- Back to Question", @question, :class => "back" %>
+<%= link_to "Next Question -->", @next, :class => "forward" %>
+<table class="response_display">
+<tr><td class="main">
+Your response to Question <%= @question.id %> was: <br />
+<div class="show_response"><%= @response.content %></div><br />
+<% if @response.correct? %>
+  <div class="correct response">Correct</div>
+<% else %>
+  <div class="wrong response">Wrong</div>
+  The correct answer is:<br />
+  <div class="show_response"><%= @question.correct.capitalize %></div>
+<% end %>
+<% if !(@question.expert_answer.blank?) %>
+  <br /><br />  
+  Expert Answer Explanation:
+  <div class="expert_answer"><%= @question.expert_answer %></div>
+<% end %>
+</td><td class="sidebar">
+<%= render 'ratings/new_rating' %>
+<%= render 'comments/comments', :new_comments => true %>
+</td></tr></table>

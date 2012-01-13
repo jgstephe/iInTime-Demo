@@ -1,0 +1,8 @@
+<%= link_to "<-- Previous Question", @prev, :class => "back" %>
+<%= link_to "Next Question -->", @next, :class => "forward" %>
+<div class="question">
+<h1><%= @question.title.capitalize %></h1>
+<h4>A <%= @question.category %> Question</h4> 
+<%= @question.content.capitalize %><br />
+<%= render 'responses/new_response' %>
+</div>

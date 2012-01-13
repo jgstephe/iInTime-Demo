@@ -1,0 +1,13 @@
+<div class="new_question"> 
+<h1>New Question</h1>
+<%= form_for [@user, @question] do |q| %>
+  <table class="new question_table round">
+    <%= render 'questions/question_form', :q => q, :action => :new %>
+    <tr>
+      <td colspan="2", class="nq_button">
+        <%= q.submit "Create New Question" %>
+      </td>
+    </tr>
+  </table>
+<% end %>
+</div>

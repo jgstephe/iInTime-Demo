@@ -1,0 +1,8 @@
+<h1><%= current_user.name %></h1>
+
+<% if @questions.empty? %>
+  <h3>You have not posted any questions.<br /><br /><%= link_to "Start posting now.", new_question_path %></h3>
+<% else %>
+  <%= link_to "Create New Question", new_question_path, :class => "new_question button round" %><br />
+  <%= render 'questions/list', :questions => @questions, :editing => true %>
+<% end %>

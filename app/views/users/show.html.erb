@@ -1,0 +1,18 @@
+<div class="user">
+<h1><%= @user.name %></h1>
+
+<table>
+<tr>
+  <td><%= link_to "Create New Question", new_question_path, :class => "button round" %></td>
+  <td><%= link_to "Start Studying", index_path, :class => "button round" %></td>
+</tr>
+<% if @questions.empty? %>
+<tr><th colspan="2"><h2>You have not posted any questions.</h2></th></tr>
+<% else %>
+<tr><th colspan="2"><h2><%= link_to "My Questions", byuser_path %></h2></th></tr>
+<tr><td colspan="2">
+<%= render 'questions/list', :questions => @questions, :editing => true %>
+</td></tr>
+<% end %>
+</table>
+</div>

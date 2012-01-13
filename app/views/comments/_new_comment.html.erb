@@ -1,0 +1,9 @@
+<div class="new_comment">
+Comment on this Question:
+<%= form_for [@question, @comment] do |c| %>
+  <%= hidden_field_tag :response_id, r.id %>
+  <%= render 'layouts/error_messages', :object => c.object %>
+  <%= c.text_area :comment %><br />
+  <%= c.submit "Submit Comment" %>
+<% end %>
+</div>
