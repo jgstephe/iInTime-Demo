@@ -4,7 +4,7 @@ class RatingsController < ApplicationController
     @response = Response.find(params[:response_id])
     @uqf = current_user.feedback(@question)
     if set_new_rating(params[:rating])
-      flash[:success] = "You just gave this question a rating of #{@uqf.ratings.first.rating}"
+      flash[:success] = "You just gave this question a rating of #{params[:rating]}"
     else
       flash[:error] = "Something went wrong with the rating! Try again later"
     end

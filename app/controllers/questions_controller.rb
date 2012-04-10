@@ -5,7 +5,8 @@ class QuestionsController < ApplicationController
     @question = Question.new
     @title = "New Question"
     @categories = categories
-    @wrong = @wrong_answers.nil? ? "" : parse_wrong_answers(params[:wrong_answer])
+    @wrong = @wrong_answers.nil? ? "" : params[:wrong_answer]
+#    @wrong = params[:wrong_answer]
     respond_to do |format|
       format.html { render new_question_path }
       format.js
@@ -13,12 +14,14 @@ class QuestionsController < ApplicationController
   end
 
   def create
-    @wrong = parse_wrong_answers(params[:wrong_answer])
+    @wrong = params[:wrong_answer]
     puts @wrong
     @categories = categories
     respond_to do |format|
-      format.html { @question = current_user.questions.build(params[:question].merge( :wrong => @wrong ));
-                    if @question.save then redirect_to @question else render new_question_path end }
+      format.html { 
+          @question = current_user.questions.build(params[:question].merge( :wrong => @wrong ))
+          if @question.save then redirect_to @question else render new_question_path end 
+      }
       format.js
     end
   end
@@ -30,7 +33,7 @@ class QuestionsController < ApplicationController
     @comments = Comment.comments_on(@question).paginate(:page => params[:page], :per_page => 10)
     @ave_rating = Rating.average_rating(@question)
     #@wrong_answers = params[:wrong_answer] || answers_to_hash(@question.wrong)
-    @wrong = params[:wrong_answer].nil? ? @question.wrong : parse_wrong_answers(params[:wrong_answer])
+    @wrong = params[:wrong_answer].nil? ? @question.wrong : params[:wrong_answer]
     #puts "Got edit request.  params[:wrong_answer][0] was #{params[:wrong_answer][0]}.  @wrong is now #{@wrong}"
     respond_to do |format|
       format.html { render 'edit' }
@@ -45,7 +48,7 @@ class QuestionsController < ApplicationController
     @comments = Comment.comments_on(@question).paginate(:page => params[:page], :per_page => 10)
     @ave_rating = Rating.average_rating(@question)
     #@wrong_answers = params[:wrong_answer]
-    @wrong = params[:wrong_answer].nil? ? @question.wrong : parse_wrong_answers(params[:wrong_answer])
+    @wrong = params[:wrong_answer].nil? ? @question.wrong : params[:wrong_answer]
     #puts "Got update request.  params[:wrong_answer][0] was #{params[:wrong_answer][0]}.  @wrong is now #{@wrong}"
     if @question.update_attributes(params[:question].merge( :wrong => @wrong ))
       flash[:success] = "Question updated."
@@ -59,10 +62,12 @@ class QuestionsController < ApplicationController
   def show
     if params[:id].to_i != 0
       @question = Question.find(params[:id]) rescue Question.first
+      puts "Questions#show"
       @user = current_user
       @title = "Question ##{@question.id}"
       @response = Response.new
-      @answers = (@question.wrong + @question.correct).split(tokenizer)
+      @answers = @question.wrong.values.push(@question.correct)
+      puts "Questions#show before get_next"
       @next = get_next(@question.id)
       @prev = get_prev(@question.id)
     else
@@ -105,25 +110,32 @@ class QuestionsController < ApplicationController
   end
   
   def get_next(q)
-    q = (q % Question.count) + 1
-    Question.find(q) rescue get_next(q)
+    if q == Question.last.id
+      Question.first
+    else
+      Question.where("id > ?", q).first 
+    end
   end
 
   def get_prev(q)
-    q = ( q % Question.count) - 1
-    q = q < 1 ? Question.last : q
-    Question.find(q) rescue get_prev(q)
+    if q == Question.first.id
+      Question.last
+    else
+      Question.where("id < ?", q).first
+    end
   end
    
   private
     def categories
       ["Family Medicine", "Internal Medicine", "Pediatrics", "Radiology", "Surgery", "Other"]
     end
-    
+
+=begin    
     def tokenizer
       "|"
     end
     
+
     def parse_wrong_answers(wrong_h)
       answers = []
       wrong_h.each do |k, v|
@@ -133,4 +145,6 @@ class QuestionsController < ApplicationController
       end
       answers.to_s
     end
+=end
+    
 end

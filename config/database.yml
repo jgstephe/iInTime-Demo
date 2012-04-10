@@ -3,10 +3,11 @@
 development:
   adapter: postgresql
   encoding: unicode
+  host: localhost
   database: db/se_development
   pool: 5
-  username: tim
-  password: tfs4pg
+  username: postgres
+  password: jgs4pg
   
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -14,15 +15,16 @@ development:
 test:
   adapter: postgresql
   encoding: unicode
+  host: localhost
   database: db/se_test
   pool: 5
-  username: tim
-  password: tfs4pg
+  username: postgres
+  password: jgs4pg
 
 production:
   adapter: postgresql
   encoding: unicode
   database: db/se_production
   pool: 5
-  username: tim
-  password: tfs4pg
+  username: postgres
+  password: jgs4pg

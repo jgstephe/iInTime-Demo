@@ -3,18 +3,24 @@ module SessionsHelper
   def sign_in(user)
     cookies.permanent.signed[:remember_token] = [user.id, user.salt]
     #session[:remember_token] = user.id
-    current_user = user
+    self.current_user = user
   end
     
   def current_user
+=begin    
     if @current_user
       puts "Got current user: #{@current_user}"
       @current_user
     else
-      puts "Getting user from token…"
+      puts "Getting user from token..."
+#      @current_user = User.find_by_id(session[:remember_token])
       @current_user = user_from_remember_token
     end
+=end
+    puts "Getting user from token..."
+    @current_user ||= user_from_remember_token
   end
+  
   
   def signed_in?
     !current_user.nil?

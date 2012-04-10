@@ -1,8 +1,14 @@
 <div class="wrong_answers">
-  <%= text_field_tag "wrong_answer[0]" %><br />
-  <% unless wrong.nil? %>
-  <% wrong.split("|").each do |a| %>
-    <%= text_field_tag "wrong_answer[#{wrong.index(a)+1}]", "#{a}", :maxlength => 255 %><br />
-  <% end %>
+  <%= text_field_tag "wrong_answer[0]" %><br /> 
+	<% if wrong.nil? or wrong.size == 0 %>
+		<%= text_field_tag "wrong_answer[0]" %><br />
+  <% else %>
+	  <% wrong.each do |a| %>
+	    <%= text_field_tag "wrong_answer[#{a[0].to_i+1}]", "#{a[1]}", :maxlength => 255 %><br />
+	  <% end %>
   <% end %>
 </div>
+
+<% if false %>
+<!-- 	    <%= text_field_tag "wrong_answer[#{wrong.key(a)+1}]", "#{a}", :maxlength => 255 %><br /> -->
+<% end %>

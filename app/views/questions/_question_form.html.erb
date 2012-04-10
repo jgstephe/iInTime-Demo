@@ -21,7 +21,7 @@
   <td>
     <%= q.label "Wrong Answers:" %><br />
     <%= form_tag url_for({ :controller => :questions, :action => action }), :remote => true do %>
-    <%= submit_tag "Add New Wrong Answer", :class => "new_wrong" %>
+	    <%= submit_tag "Add New Wrong Answer", :class => "new_wrong" %>
     <% end %>
   </td>
   <td><%= render 'questions/wrong_answers', :wrong => @wrong %></td>
